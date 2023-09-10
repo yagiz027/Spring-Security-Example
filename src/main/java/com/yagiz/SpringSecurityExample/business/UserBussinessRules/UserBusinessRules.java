@@ -19,14 +19,8 @@ public class UserBusinessRules {
         }
     }
 
-    public void checkIfUserNameAlreadyExists(String userName){
-        if(repository.existsByUsername(userName)){
-            throw new BusinessException(Messages.User.UserNameAlreadyExists);
-        }
-    }
-
-    public void checkIfUserEmailAlreadyExists(String userEmail){
-        if(repository.existsByUserEmail(userEmail)){
+    public void checkIfUserEmailAlreadyExists(String email){
+        if(repository.existsByEmail(email)){
             throw new BusinessException(Messages.User.UserEmailAlreadyExists);
         }
     }

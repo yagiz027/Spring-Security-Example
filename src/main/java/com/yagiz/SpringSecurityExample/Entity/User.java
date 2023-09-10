@@ -35,23 +35,19 @@ public class User implements UserDetails{
     private int id;
 
     @Column(name ="user_name" )
-    private String name;
+    private String firstname;
     
     @Column(name="user_lastname")
     private String lastName;
-    
-    @Column(name = "username")
-    private String username;
 
     @Column(name = "userEmail")
-    private String userEmail;
+    private String email;
     
     @Column(name="password")
     private String password;
 
     @Enumerated(EnumType.STRING)
     private Role role;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -76,5 +72,10 @@ public class User implements UserDetails{
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
     }
 }

@@ -29,7 +29,6 @@ public class AuthenticationManager implements AuthenticationService {
 
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
-        userBusinessRules.checkIfUserNameAlreadyExists(request.getUsername());
         userBusinessRules.checkIfUserEmailAlreadyExists(request.getEmail());
         User user=mapperService.forRequest().map(request, User.class);
         user.setId(0);
@@ -49,7 +48,7 @@ public class AuthenticationManager implements AuthenticationService {
                 request.getPassword())
         );
 
-        User user = repository.findByUserEmail(request.getEmail())
+        User user = repository.findByEmail(request.getEmail())
         .orElseThrow(()-> new BusinessException(Messages.User.InvalidUserEmail));
 
         AuthenticationResponse authResponse=mapperService.forResponse().map(user, AuthenticationResponse.class);

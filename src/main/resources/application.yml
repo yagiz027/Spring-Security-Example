@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: SPRING_SECURITY_EXAMPLE
+  datasource:
+    username: root
+    password: 'ygz123'
+    url: jdbc:mysql://localhost:3306/spring_security?createDatabaseIfNotExist=true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update

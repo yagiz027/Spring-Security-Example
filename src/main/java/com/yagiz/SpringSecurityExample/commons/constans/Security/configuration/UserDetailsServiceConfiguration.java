@@ -30,7 +30,7 @@ public class UserDetailsServiceConfiguration {
     
     @Bean
     public UserDetailsService userDetailsService(){
-        return username-> userRepository.findByUserEmail(username)
+        return username-> userRepository.findByEmail(username)
         .orElseThrow(()-> new BusinessException(Messages.User.UserNotFound));
     }
 
